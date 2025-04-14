@@ -133,4 +133,4 @@ class LiveTranscriber:
             if stop_event and stop_event.is_set():
                 break
 
-            time.sleep(5)
+            time.sleep(20)
