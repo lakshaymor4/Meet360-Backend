@@ -48,7 +48,6 @@ proglog==0.1.10
 psycopg2==2.9.10
 pusher==3.3.3
 pyasn1==0.6.1
-PyAudio==0.2.14
 pycparser==2.22
 pyee==11.1.1
 Pygments==2.19.1
