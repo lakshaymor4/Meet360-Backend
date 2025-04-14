@@ -12,7 +12,10 @@ def upload_video():
         file = request.files['file']
         print(f"Received file: {file.filename}")
         
-        video_path = os.path.join(current_app.config['UPLOAD_FOLDER'], file.filename)
+        upload_folder = current_app.config['UPLOAD_FOLDER']
+        if not os.path.exists(upload_folder):
+            os.makedirs(upload_folder)
+        video_path = os.path.join(upload_folder, file.filename)
         print(f"Saving video to: {video_path}")
         file.save(video_path)
         print(f"Video saved to: {video_path}")
