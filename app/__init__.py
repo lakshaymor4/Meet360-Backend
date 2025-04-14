@@ -28,12 +28,12 @@ def create_app(config_name='development'):
     from app.routes.transcription import transcription_bp
     from app.models.bot import Bot
     from app.routes.recordingTranscription import recordingTranscription_bp
-    from app.routes.summary import summary_bp
+
     
     app.register_blueprint(main_bp)
     app.register_blueprint(transcription_bp)
     app.register_blueprint(recordingTranscription_bp)
-    app.register_blueprint(summary_bp)
+   
     
     @app.shell_context_processor
     def make_shell_context():
