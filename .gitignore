@@ -3,7 +3,7 @@
 __pycache__
 .env
 app.py
-app/__init__.py
+
 app/__pycache__/__init__.cpython-312.pyc
 app/routes/summary.py
 app/routes/__pycache__/recordingTranscription.cpython-312.pyc
