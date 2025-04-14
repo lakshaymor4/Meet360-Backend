@@ -15,7 +15,6 @@ app/services/__pycache__/liveTranscriber.cpython-312.pyc
 app/services/__pycache__/recordingTranscriber.cpython-312.pyc
 app/services/__pycache__/summaryService.cpython-312.pyc
 model
-app/routes/transcription.py
 
 
 

@@ -84,7 +84,14 @@ class LiveTranscriber:
                 transcripts = data.get("bot_data", {}).get("transcripts", [])
                 new_transcripts = []
 
-                
+                redis_client = redis.Redis(
+                        host=current_app.config.get("REDIS_URL"),
+                        port=15230,
+                        decode_responses=True,
+                        username="default",
+                        password=current_app.config.get("KEY_REDIS"),
+                        )               
+                redis_key = current_app.config.get("REDIS_KEY")
 
                 for transcript in transcripts:
                     transcript_id = transcript["id"]
