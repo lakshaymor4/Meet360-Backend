@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request, current_app
 from flask_socketio import join_room, leave_room, emit
 from app.models.bot import Bot
 from app.services.liveTranscriber import LiveTranscriber
+from app import limiter
 import threading
 import uuid
 import time
@@ -13,6 +14,8 @@ transcription_bp = Blueprint('transcription', __name__, url_prefix='/api/transcr
 active_threads = {}
 
 @transcription_bp.route('/start', methods=['POST'])
+@limiter.limit("1 per hour") 
+@limiter.limit("1 per minute") 
 def start_transcription():
     """Start a transcription session and run it in a background thread."""
     try:
@@ -55,6 +58,7 @@ def start_transcription():
         return jsonify({'error': str(e)}), 500
 
 @transcription_bp.route('/stop/<session_id>', methods=['GET'])
+@limiter.limit("20 per hour")  # Allow more stops than starts
 def stop_transcription(session_id):
     """Stop a transcription session."""
     try:
