@@ -13,7 +13,7 @@ from flask_limiter.util import get_remote_address
 
 migrate = Migrate()
 
-socketio = SocketIO(cors_allowed_origins="*", logger=True, engineio_logger=True, debug=True)
+socketio = SocketIO(cors_allowed_origins="http://localhost:5173", logger=True, engineio_logger=True, debug=True)
 
 limiter = Limiter(
     get_remote_address,
