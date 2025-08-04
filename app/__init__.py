@@ -34,7 +34,7 @@ def create_app(config_name='development'):
     migrate.init_app(app, db)
     socketio.init_app(app)
     
-    CORS(app)
+    CORS(app, origins=["http://localhost:5173"])
     from app.routes.transcription import transcription_bp
     from app.models.bot import Bot
     from app.routes.recordingTranscription import recordingTranscription_bp
