@@ -1,4 +1,3 @@
-
 import os
 from flask import Flask
 from flask_migrate import Migrate
@@ -34,7 +33,7 @@ def create_app(config_name='development'):
     migrate.init_app(app, db)
     socketio.init_app(app)
     
-    CORS(app, origins=["http://localhost:5173"])
+    CORS(app, origins=["http://localhost:5173"], supports_credentials=True, methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
     from app.routes.transcription import transcription_bp
     from app.models.bot import Bot
     from app.routes.recordingTranscription import recordingTranscription_bp
