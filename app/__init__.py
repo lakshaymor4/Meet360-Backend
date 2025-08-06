@@ -12,7 +12,10 @@ from flask_limiter.util import get_remote_address
 
 migrate = Migrate()
 
-socketio = SocketIO(cors_allowed_origins="http://localhost:5173", logger=True, engineio_logger=True, debug=True)
+socketio = SocketIO(cors_allowed_origins=[
+    "http://localhost:5173", 
+    "https://transcript-website-ten.vercel.app"
+], logger=True, engineio_logger=True, debug=True)
 
 limiter = Limiter(
     get_remote_address,
@@ -33,7 +36,10 @@ def create_app(config_name='development'):
     migrate.init_app(app, db)
     socketio.init_app(app)
     
-    CORS(app, origins=["http://localhost:5173"], supports_credentials=True, methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
+    CORS(app, origins=[
+        "http://localhost:5173", 
+        "https://transcript-website-ten.vercel.app"
+    ], supports_credentials=True, methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
     from app.routes.transcription import transcription_bp
     from app.models.bot import Bot
     from app.routes.recordingTranscription import recordingTranscription_bp
